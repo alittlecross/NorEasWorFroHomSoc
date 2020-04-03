@@ -1,0 +1,32 @@
+<%- include('../_partials/head') %>
+
+<div id="background">
+  <div id="background-top"></div>
+
+  <div id="foreground">
+    <div id="heading">Old Skool Quiz</div>
+
+    <form method="POST">
+      <label>Enter your name...</label>
+      <input type="text" name="name" autocomplete="off" placeholder="...here" spellcheck="false" value="<%= _name %>">
+
+      <label>Gamecode...</label>
+      <input type="text" name="gamecode" autocomplete="off" placeholder="...123-123" spellcheck="false" value="<%= _gamecode %>"<% if (_gamecode && !_messages) { %> readonly<% } %>>
+
+      <label>Password...</label>
+      <input type="password" name="password" autocomplete="off" placeholder="...abc-abc" spellcheck="false" value="<%= _password %>"<% if (_password && !_messages) { %> readonly<% } %>>
+
+      <button class="rubber">Join</button>
+    </form>
+
+    <% if (_messages) { %>
+      <% _messages.forEach(_message => { %>
+        <%- include('../_partials/error', { _message: _message }) %>
+      <% }) %>
+    <% } %>
+
+    <p>Once you have joined, use Copy link to invite people.</p>
+  </div>
+</div>
+
+<%- include('../_partials/link-back') %>

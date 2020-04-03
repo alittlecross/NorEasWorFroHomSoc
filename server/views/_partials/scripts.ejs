@@ -1,0 +1,7 @@
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="/scripts/copy-link.js"></script>
+  <script src="/scripts/<%= _script %>.js"></script>
+<% if (_script !== 'question') { %>
+  <script src="/services/socket-client.js"></script>
+<% } %>

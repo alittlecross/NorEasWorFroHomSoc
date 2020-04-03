@@ -1,0 +1,17 @@
+<table id="points-table"<% if (_game.counting) { %> hidden<% } %>>
+  <tr class="names">
+<% for (const id in _game.players) { %>
+  <% if (_game.players[id].visible) { %>
+    <td data-id="<%= id %>"><span><%= _game.players[id].name %></span></td>
+  <% } %>
+<% } %>
+  </tr>
+
+  <tr id="points">
+<% for (const id in _game.players) { %>
+  <% if (_game.players[id].visible) { %>
+    <td data-id="<%= id %>"><%= _game.players[id].points %></td>
+  <% } %>
+<% } %>
+  </tr>
+</table>

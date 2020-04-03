@@ -1,0 +1,46 @@
+<div id="menu"<% if (_game.counting || _game.host.id !== _id) { %> hidden<% } %>>
+  <span id="switch-host" class="highlight-yellow">Switch host...</span>
+  <span id="bonus-points" class="highlight-green">Bonus points...</span>
+  <span id="merge-players" class="highlight-blue">Merge players...</span>
+  <span id="remove-player" class="highlight-pink">Remove player...</span>
+
+  <table id="bonus-points-table" hidden>
+    <tr>
+  <% for (const id in _game.players) { %>
+    <% if (_game.players[id].visible) { %>
+      <td data-id="<%= id %>"><span class="sign">-</span> &nbsp; &nbsp; <span class="sign">+</span></td>
+    <% } %>
+  <% } %>
+    </tr>
+  </table>
+
+  <table id="merge-players-table" hidden>
+    <tr>
+  <% for (const id in _game.players) { %>
+    <% if (_game.players[id].visible) { %>
+      <td data-id="<%= id %>"><span class="sign">#</span></td>
+    <% } %>
+  <% } %>
+    </tr>
+  </table>
+
+  <table id="remove-player-table" hidden>
+    <tr>
+  <% for (const id in _game.players) { %>
+    <% if (_game.players[id].visible) { %>
+      <td data-id="<%= id %>"><span class="sign">&cross;</span></td>
+    <% } %>
+  <% } %>
+    </tr>
+  </table>
+
+  <table id="switch-host-table" hidden>
+    <tr>
+  <% for (const id in _game.players) { %>
+    <% if (_game.players[id].visible) { %>
+      <td data-id="<%= id %>"><span class="sign">&check;</span></td>
+    <% } %>
+  <% } %>
+    </tr>
+  </table>
+</div>

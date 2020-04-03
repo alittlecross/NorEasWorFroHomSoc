@@ -1,0 +1,23 @@
+<%- include('../_partials/head') %>
+
+<div id="background">
+  <div id="background-top"></div>
+
+  <div id="foreground">
+    <div id="heading">Old Skool Quiz</div>
+
+    <form method="POST">
+      <label>Set the quiz name...</label>
+      <input type="text" name="name" autocomplete="off" placeholder="...it will replace Old Skool Quiz" spellcheck="false">
+      
+      <button class="rubber">Create</button>
+    </form>
+
+    <% if (_message) { %>
+      <%- include('../_partials/error') %>
+    <% } %>
+
+  </div>
+</div>
+
+<%- include('../_partials/link-back') %>

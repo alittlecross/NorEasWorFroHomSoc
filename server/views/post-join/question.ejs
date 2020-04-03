@@ -1,0 +1,41 @@
+<%- include('../_partials/head') %>
+
+<div id="background">
+  <div id="background-top"></div>
+
+  <div id="foreground">
+    <div id="heading"><%= _game.name %></div>
+    
+    <form method="POST">
+      <label>Enter the question...</label>
+      <input type="text" name="question" autocomplete="off" placeholder="...here" value="<%= _question %>">
+
+      <label>Enter the answer...</label>
+      <input type="text" name="answer" autocomplete="off" placeholder="...here" value="<%= _answer %>">
+
+      <label>Seconds to count down...</label>
+      <input type="text" name="seconds" autocomplete="off" placeholder="...0-60" value="<%= _seconds %>">
+
+      <button class="rubber">Submit</button>
+
+      <% if (_messages) { %>
+        <% _messages.forEach(_message => { %>
+          <%- include('../_partials/error', { _message: _message }) %>
+        <% }) %>
+      <% } %>
+
+      <p>Optional</p>
+
+      <label>Enter a picture url...</label>
+      <input id="picture-url" type="text" name="picture" autocomplete="off" placeholder="...here" value="<%= _picture %>">
+    </form>
+    
+    <%- include('../_partials/img-container', { _picture: _picture }) %>
+  </div>
+</div>
+
+<%- include('../_partials/link-copy-link') %>
+
+<%- include('../_partials/img-container-enlarged') %>
+
+<%- include('../_partials/scripts', { _script: 'question' }) %>

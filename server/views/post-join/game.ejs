@@ -1,0 +1,45 @@
+<%- include('../_partials/head') %>
+
+<div id="game" data-gamecode="<%= _gamecode %>" data-counting="<%= _game.counting %>" hidden></div>
+<div id="merge" data-id="" hidden></div>
+
+<div id="background">
+  <div id="background-top"></div>
+
+  <div id="foreground">
+    <div id="heading"><%= _game.name %></div>
+
+    <div class="sub-heading">Asking the questions is... <span id="host"><%= _game.host.name %></span></div>
+
+    <div id="answer"<% if (!_game.counting || _game.host.id === _id) { %> hidden<% } %>>
+      <input type="text" autocomplete="off" placeholder="Enter your answer...">
+
+      <button class="rubber">Submit</button>
+    </div>
+
+    <div id="ask-next-question"<% if (_game.counting || _game.host.id !== _id) { %> hidden<% } %>>
+      <a class="rubber" href="/<%= _gamecode %>/question">Ask next question</a>
+    </div>
+
+    <div id="end-countdown"<% if (!_game.counting || _game.host.id !== _id) { %> hidden<% } %>>
+      <button class="rubber">End countdown</button>
+    </div>
+
+    <%- include('../_partials/points-table') %>
+
+    <%- include('../_partials/menu') %>
+
+    <%- include('../_partials/questions') %>
+
+  </div>
+</div>
+
+<%- include('../_partials/link-guide') %>
+
+<%- include('../_partials/link-copy-link') %>
+
+<%- include('../_partials/img-container-enlarged') %>
+
+<div id="countdown"></div>
+
+<%- include('../_partials/scripts', { _script: 'game' }) %>

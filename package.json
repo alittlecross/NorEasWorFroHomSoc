@@ -1,0 +1,41 @@
+{
+  "name": "old-skool-quiz",
+  "version": "1.0.0",
+  "description": "A pet project created to hold Friday afternoon quizes during lockdown.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/wdio test/config.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alittlecross/old-skool-quiz.git"
+  },
+  "author": "alittlecross",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alittlecross/old-skool-quiz/issues"
+  },
+  "homepage": "https://github.com/alittlecross/old-skool-quiz#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "standard": {
+    "ignore": [
+      "/server/public/"
+    ],
+    "globals": [
+      "$",
+      "$$",
+      "ava",
+      "boo",
+      "dot",
+      "kit",
+      "browser"
+    ]
+  }
+}

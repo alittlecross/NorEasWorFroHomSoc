@@ -1,0 +1,34 @@
+<%- include('../_partials/head') %>
+
+<div id="game" data-gamecode="<%= _gamecode %>" hidden></div>
+
+<div id="background">
+  <div id="background-top"></div>
+
+  <div id="foreground">
+    <div id="heading"><%= _game.name %></div>
+
+    <div class="sub-heading">Select the host...</div>
+    
+    <form method="POST">
+      <select name="id">
+        <option value="" disabled selected>Select</option>
+      <% for (const id in _game.players) { %>
+        <option value="<%= id %>"><%= _game.players[id].name %></option>
+      <% } %>
+      </select>
+
+      <button class="rubber">Submit</button>
+    </form>
+
+    <% if (_message) { %>
+      <%- include('../_partials/error') %>
+    <% } %>
+
+    <p>The host can change this between questions.</p>
+  </div>
+</div>
+
+<%- include('../_partials/link-copy-link') %>
+
+<%- include('../_partials/scripts', { _script: 'host' }) %>

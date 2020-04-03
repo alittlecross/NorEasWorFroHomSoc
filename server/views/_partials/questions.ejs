@@ -1,0 +1,38 @@
+<div id="questions">
+<% _game.questions.forEach((_, index, a) => { %>
+  <% const i = a.length - index - 1 %>
+  <div id="<%= i %>">
+    <div class="question"><%= i + 1 %>. <%= a[i].question %><% if (a[i].showAnswer) { %> <span class="highlight-yellow"><%= a[i].answer %></span><% } %></div>
+
+  <% if (a[i].picture) { %>
+    <%- include('../_partials/img-container', { _picture: a[i].picture }) %>
+  <% } %>
+
+    <table>
+      <tr class="names">
+    <% for (const id in _game.players) { %>
+      <% if (_game.players[id].visible) { %>
+        <td data-id="<%= id %>"><%= _game.players[id].name %></td>
+      <% } %>
+    <% } %>
+      </tr>
+
+      <tr class="answers">
+    <% for (const id in _game.players) { %>
+      <% if (_game.players[id].visible) { %>
+        <% if (_game.players[id].answers[i]) { %>
+          <% if (_game.players[id].answers[i].visible) { %>
+        <td<% if (_game.host.id === _id) { %> class="answer"<% } %> data-id="<%= id %>"><span<% if (_game.players[id].answers[i].correct) { %> class="highlight-green"<% } %>><%= _game.players[id].answers[i].answer %></span></td>
+          <% } else { %>
+        <td class="highlight-blue" data-id="<%= id %>"><span><% if (_id === id || _game.host.id === _id) { %><%= _game.players[id].answers[i].answer %><% } %></span></td>
+          <% } %>
+        <% } else { %>
+        <td data-id="<%= id %>"><span></span></td>
+        <% } %>
+      <% } %>
+    <% } %>
+      </tr>
+    </table>
+  </div>
+<% }) %>
+</div>
